@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Clicker+Script&family=Poppins:ital,wght@0,200;1,200&family=Quicksand:wght@300;400;500;600&family=Rubik:wght@300&display=swap');
+
+/* the styles of the fonts  */
+
+*{
+    font-family: 'Quicksand' sans-serif;
+}
+
+body{
+    font-family: 'Quicksand', sans-serif;
+}
+
+.main-div-to-do{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-container-app{
+    width: 30%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-header-app{
+    width: 60%;
+    background: #af7eeb;
+    display: flex;
+    color: white;
+     border-radius: 2px;
+}
+
+.main-header-app-icon{
+    width: 10%;
+}
+
+.main-header-app-text{
+    
+}
