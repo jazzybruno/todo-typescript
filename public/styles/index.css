@@ -117,6 +117,7 @@ body{
 
 .main-form{
  margin-top: 10px;
+ opacity: 0;
 }
 
 .main-form > form > input{
