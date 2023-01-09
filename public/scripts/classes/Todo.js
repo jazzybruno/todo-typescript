@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Todo = void 0;
-class Todo {
+export class Todo {
     constructor(id, text, completed = false) {
         this.id = id;
         this.text = text;
@@ -14,4 +11,3 @@ class Todo {
         console.log(this.format());
     }
 }
-exports.Todo = Todo;
