@@ -25,6 +25,7 @@ form.addEventListener('submit', (e : Event) => {
     if(input.value == ""){
      error.innerText = "Please Enter a Valid Task"
     }else{
+    error.innerText = " "
     let todo = new Todo(1, input.value , false)
     let list = new ListFormat(document.querySelector('ul')!)
     list.render(todo, 'start')
