@@ -147,3 +147,8 @@ button{
     font-family: 'Quicksand', sans-serif;
 }
 
+.error-message{
+    color: #ca2e2e;
+    margin-top: 10px;
+}
+

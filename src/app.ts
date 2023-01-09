@@ -5,9 +5,11 @@ let button : HTMLButtonElement
 let div : HTMLDivElement
 let form : HTMLFormElement
 let input : HTMLInputElement
+let error : HTMLDivElement
 
 button = document.querySelector('.main-button-add')!
 div = document.querySelector('.main-form')!
+error = document.querySelector('.error-message')!
 
 
 button.addEventListener('click', () => {
@@ -20,10 +22,14 @@ input = document.querySelector('input')!
 
 form.addEventListener('submit', (e : Event) => {
     e.preventDefault()
+    if(input.value == ""){
+     error.innerText = "Please Enter a Valid Task"
+    }else{
     let todo = new Todo(1, input.value , false)
     let list = new ListFormat(document.querySelector('ul')!)
     list.render(todo, 'start')
     input.value = ""
+    }
 })
 
 
