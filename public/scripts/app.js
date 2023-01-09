@@ -1,5 +1,6 @@
 import { Todo } from "./classes/Todo.js";
 import { ListFormat } from "./classes/ListFormat.js";
+import { Local } from "./classes/LocalStorage.js";
 let button;
 let div;
 let form;
@@ -9,7 +10,6 @@ button = document.querySelector('.main-button-add');
 div = document.querySelector('.main-form');
 error = document.querySelector('.error-message');
 button.addEventListener('click', () => {
-    console.log("Hellp");
     div.style.opacity = '1';
 });
 form = document.querySelector('form');
@@ -21,9 +21,21 @@ form.addEventListener('submit', (e) => {
     }
     else {
         error.innerText = " ";
-        let todo = new Todo(1, input.value, false);
         let list = new ListFormat(document.querySelector('ul'));
-        list.render(todo, 'start');
+        let todo = new Todo(1, input.value, false);
+        let todoArray = [];
+        if (list.load() == undefined || list.load() == null) {
+            todoArray = [todo];
+            let local = new Local(todoArray);
+            local.save();
+        }
+        else {
+            todoArray = list.load();
+            todoArray.push(todo);
+            let local = new Local(todoArray);
+            local.save();
+        }
+        list.render(todoArray, 'start');
         input.value = "";
     }
 });

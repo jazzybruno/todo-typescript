@@ -1,5 +1,6 @@
 import { Todo } from "./classes/Todo.js"
 import { ListFormat } from "./classes/ListFormat.js"
+import { Local } from "./classes/LocalStorage.js"
 
 let button : HTMLButtonElement
 let div : HTMLDivElement
@@ -13,7 +14,6 @@ error = document.querySelector('.error-message')!
 
 
 button.addEventListener('click', () => {
- console.log("Hellp");
  div.style.opacity = '1'
 })
 
@@ -26,9 +26,23 @@ form.addEventListener('submit', (e : Event) => {
      error.innerText = "Please Enter a Valid Task"
     }else{
     error.innerText = " "
-    let todo = new Todo(1, input.value , false)
     let list = new ListFormat(document.querySelector('ul')!)
-    list.render(todo, 'start')
+    let todo = new Todo(1, input.value , false)
+    let todoArray : (Todo)[] = []
+
+    if(list.load() == undefined || list.load() == null ){
+
+        todoArray = [todo]
+        let local = new Local(todoArray) 
+        local.save()
+    }else{
+        todoArray = list.load()
+        todoArray.push(todo)
+        let local = new Local(todoArray) 
+        local.save()
+    }
+    
+    list.render(todoArray, 'start')
     input.value = ""
     }
 })

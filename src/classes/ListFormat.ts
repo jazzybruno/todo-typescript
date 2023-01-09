@@ -1,4 +1,5 @@
  import { Formater } from "../interfaces/Format.js";
+ import { Todo } from "./Todo.js";
 
  export class ListFormat{
     // the construnctor to recieive the ul where to output the list
@@ -7,27 +8,38 @@
     ){}
 
     // the render method to render the list
-    render(todo: Formater , pos: 'start' | 'end'){
-        let li = document.createElement('li')
-        let divOne = document.createElement('div')
-        let divTwo = document.createElement('div')
-        let divTwoOne = document.createElement('div')
-        let divTwoTwo = document.createElement('div') 
+    render(todo: (Formater)[] , pos: 'start' | 'end'){
+        let length = todo.length
+        for (let i = 0; i < length; i++) {
 
-        divOne.innerText = todo.format()
-        divTwoOne.innerHTML = '<i class="fa-solid fa-check"></i>'
-        divTwoTwo.innerHTML = '<i class="fa-solid fa-trash"></i>'
-
-        divTwo.append(divTwoOne)
-        divTwo.append(divTwoTwo)
-        li.append(divOne)
-        li.append(divTwo)
-          
-        if(pos === 'start'){
-            this.listContainer.prepend(li)
-        }else{
-            this.listContainer.append(li)
+            let li = document.createElement('li')
+            let divOne = document.createElement('div')
+            let divTwo = document.createElement('div')
+            let divTwoOne = document.createElement('div')
+            let divTwoTwo = document.createElement('div') 
+    
+            divOne.innerText = todo[i].format()
+            divTwoOne.innerHTML = '<i class="fa-solid fa-check"></i>'
+            divTwoTwo.innerHTML = '<i class="fa-solid fa-trash"></i>'
+    
+            divTwo.append(divTwoOne)
+            divTwo.append(divTwoTwo)
+            li.append(divOne)
+            li.append(divTwo)
+              
+            if(pos === 'start'){
+                this.listContainer.prepend(li)
+            }else{
+                this.listContainer.append(li)
+            }
+            
+            
         }
-        
     }
+
+        //the function that loads 
+        load():(Todo)[]{
+            return JSON.parse(localStorage.getItem('todos')!)
+          }
+         //the function that loads 
  }
