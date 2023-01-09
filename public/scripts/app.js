@@ -1,4 +1,5 @@
 import { Todo } from "./classes/Todo.js";
+import { ListFormat } from "./classes/ListFormat.js";
 let button;
 let div;
 let form;
@@ -14,5 +15,7 @@ input = document.querySelector('input');
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     let todo = new Todo(1, input.value, false);
-    console.log(todo);
+    let list = new ListFormat(document.querySelector('ul'));
+    list.render(todo, 'start');
+    input.value = "";
 });
