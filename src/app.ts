@@ -16,7 +16,7 @@ button.addEventListener('click', () => {
 })
 
 form = document.querySelector('form')!
-input = document.querySelector('input')!
+input = document.querySelector('input')! 
 
 form.addEventListener('submit', (e : Event) => {
     e.preventDefault()
