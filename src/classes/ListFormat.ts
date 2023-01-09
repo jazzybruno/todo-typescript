@@ -8,7 +8,10 @@
     ){}
 
     // the render method to render the list
-    render(todo: (Formater)[] , pos: 'start' | 'end'){
+    render(todo: (Todo)[] , pos: 'start' | 'end'){
+        console.log("Clicked");
+        console.log(todo[0]);
+        
         let length = todo.length
         for (let i = 0; i < length; i++) {
 
@@ -18,7 +21,7 @@
             let divTwoOne = document.createElement('div')
             let divTwoTwo = document.createElement('div') 
     
-            divOne.innerText = todo[i].format()
+            divOne.innerText = todo[i].text
             divTwoOne.innerHTML = '<i class="fa-solid fa-check"></i>'
             divTwoTwo.innerHTML = '<i class="fa-solid fa-trash"></i>'
     

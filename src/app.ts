@@ -1,6 +1,7 @@
 import { Todo } from "./classes/Todo.js"
 import { ListFormat } from "./classes/ListFormat.js"
 import { Local } from "./classes/LocalStorage.js"
+import { Formater } from "./interfaces/Format.js"
 
 let button : HTMLButtonElement
 let div : HTMLDivElement
