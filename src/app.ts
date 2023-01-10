@@ -5,6 +5,9 @@ import { Formater } from "./interfaces/Format.js"
 import { render } from "./functions/rendering.js"
 import { load } from "./functions/loading.js"
 
+let iconCheck = document.querySelectorAll('.icon-check')!;
+let iconDelete = document.querySelectorAll('.icon-delete');
+
 window.addEventListener('load' , ()=>{
     if(load() == null || load() == undefined){
         let array  : (Todo)[]= []
@@ -12,7 +15,24 @@ window.addEventListener('load' , ()=>{
     }else{
         let todoArray : (Todo)[] = load()
         render(todoArray , document.querySelector('ul')!)
+        iconCheck = document.querySelectorAll('.icon-check')!
+        iconDelete = document.querySelectorAll('.icon-delete')!
     }
+
+    iconCheck.forEach(icon => {
+        icon.addEventListener('click' , (e : Event) => {
+            console.log("Clicked the checking icon");
+        })
+    })
+    
+    iconDelete.forEach(icon => {
+        icon.addEventListener('click' , (e : Event) => {
+            console.log("Clicked the deleting icon");
+            
+        })
+        
+    })
+
 })
 
 let button : HTMLButtonElement
@@ -20,6 +40,10 @@ let div : HTMLDivElement
 let form : HTMLFormElement
 let input : HTMLInputElement
 let error : HTMLDivElement
+
+
+
+
 
 button = document.querySelector('.main-button-add')!
 div = document.querySelector('.main-form')!
@@ -59,7 +83,5 @@ form.addEventListener('submit', (e : Event) => {
     input.value = ""
     }
 })
-
-
 
 

@@ -14,7 +14,9 @@ export const render :Function = (todo :(Todo)[] , container : HTMLUListElement) 
     
             divOne.innerText = todo[i].text
             divTwoOne.innerHTML = '<i class="fa-solid fa-check"></i>'
+            divTwoOne.className = "icon-check"
             divTwoTwo.innerHTML = '<i class="fa-solid fa-trash"></i>'
+            divTwoTwo.className = "icon-delete"
     
             divTwo.append(divTwoOne)
             divTwo.append(divTwoTwo)
