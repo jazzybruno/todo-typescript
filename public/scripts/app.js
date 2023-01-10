@@ -23,6 +23,8 @@ window.addEventListener('load', () => {
     });
     iconDelete.forEach(icon => {
         icon.addEventListener('click', (e) => {
+            console.log(icon.childNodes[1].nodeValue);
+            console.log(icon.childNodes[1]);
             console.log("Clicked the deleting icon");
         });
     });
@@ -48,7 +50,8 @@ form.addEventListener('submit', (e) => {
     else {
         error.innerText = " ";
         let list = new ListFormat(document.querySelector('ul'));
-        let todo = new Todo(1, input.value, false);
+        let length = load().length;
+        let todo = new Todo(length + 1, input.value, false);
         let todoArray = [];
         if (list.load() == undefined || list.load() == null) {
             todoArray = [todo];

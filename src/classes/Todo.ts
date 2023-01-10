@@ -3,7 +3,7 @@ import { Formater } from "../interfaces/Format.js";
 export class Todo implements Formater {
     
    constructor(
-    protected id : number ,
+    public id : number ,
     public text : string,
     public completed : boolean = false,
    ){}
