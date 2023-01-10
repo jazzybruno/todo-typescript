@@ -2,6 +2,18 @@ import { Todo } from "./classes/Todo.js"
 import { ListFormat } from "./classes/ListFormat.js"
 import { Local } from "./classes/LocalStorage.js"
 import { Formater } from "./interfaces/Format.js"
+import { render } from "./functions/rendering.js"
+import { load } from "./functions/loading.js"
+
+window.addEventListener('load' , ()=>{
+    if(load() == null || load() == undefined){
+        let array  : (Todo)[]= []
+        localStorage.setItem('todos' , JSON.stringify(array))
+    }else{
+        let todoArray : (Todo)[] = load()
+        render(todoArray , document.querySelector('ul')!)
+    }
+})
 
 let button : HTMLButtonElement
 let div : HTMLDivElement

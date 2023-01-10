@@ -1,6 +1,18 @@
 import { Todo } from "./classes/Todo.js";
 import { ListFormat } from "./classes/ListFormat.js";
 import { Local } from "./classes/LocalStorage.js";
+import { render } from "./functions/rendering.js";
+import { load } from "./functions/loading.js";
+window.addEventListener('load', () => {
+    if (load() == null || load() == undefined) {
+        let array = [];
+        localStorage.setItem('todos', JSON.stringify(array));
+    }
+    else {
+        let todoArray = load();
+        render(todoArray, document.querySelector('ul'));
+    }
+});
 let button;
 let div;
 let form;
