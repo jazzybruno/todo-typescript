@@ -18,7 +18,25 @@ window.addEventListener('load', () => {
     }
     iconCheck.forEach(icon => {
         icon.addEventListener('click', (e) => {
-            console.log("Clicked the checking icon");
+            let container = icon.childNodes[1];
+            let word = JSON.stringify(container.innerText);
+            let id = eval(word);
+            let array = load();
+            let noChecked = array.filter((todo => {
+                return todo.id != id;
+            }));
+            let checked = array.filter((todo => {
+                return todo.id == id;
+            }));
+            if (checked[0].completed == true) {
+                checked[0].completed = false;
+            }
+            else {
+                checked[0].completed = true;
+            }
+            let newArray = [...noChecked, ...checked];
+            localStorage.setItem('todos', JSON.stringify(newArray));
+            window.location.reload();
         });
     });
     iconDelete.forEach(icon => {
@@ -34,7 +52,8 @@ window.addEventListener('load', () => {
             //refreshing the list
             let list = document.querySelector('ul');
             localStorage.setItem('todos', JSON.stringify(filtered));
-            window.location.reload();
+            list.innerHTML = "";
+            //  window.location.reload()
         });
     });
 });
@@ -61,7 +80,7 @@ form.addEventListener('submit', (e) => {
         let list = new ListFormat(document.querySelector('ul'));
         let length = load().length;
         console.log(length);
-        let todo = new Todo(length + 1, input.value, true);
+        let todo = new Todo(length + 1, input.value, false);
         let todoArray = [];
         if (list.load() == undefined || list.load() == null) {
             todoArray = [todo];

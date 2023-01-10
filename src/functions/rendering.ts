@@ -22,11 +22,11 @@ export const render :Function = (todo :(Todo)[] , container : HTMLUListElement) 
                 divTwoTwo.innerHTML = '<i class="fa-solid fa-trash"></i>'
                 divTwoTwo.className = "icon-delete"
                 divTwoOneOne.innerText = todo[i].id.toString()
-                // divTwoOneTwo.innerText = todo[i].id.toString()
+                divTwoOneTwo.innerText = todo[i].id.toString()
                 divTwoOneOne.style.display = "none"
-                // divTwoOneTwo.style.display = "none"
+                divTwoOneTwo.style.display = "none"
                 divTwoOneOne.className = "id-todo"
-                divTwoOne.append(divTwoOneOne)
+                divTwoOne.append(divTwoOneTwo)
                 divTwoTwo.append(divTwoOneOne)
                  
                 divTwo.append(divTwoOne)
@@ -43,11 +43,11 @@ export const render :Function = (todo :(Todo)[] , container : HTMLUListElement) 
                 divTwoTwo.innerHTML = '<i class="fa-solid fa-trash"></i>'
                 divTwoTwo.className = "icon-delete"
                 divTwoOneOne.innerText = todo[i].id.toString()
-                // divTwoOneTwo.innerText = todo[i].id.toString()
+                divTwoOneTwo.innerText = todo[i].id.toString()
                 divTwoOneOne.style.display = "none"
-                // divTwoOneTwo.style.display = "none"
+                divTwoOneTwo.style.display = "none"
                 divTwoOneOne.className = "id-todo"
-                divTwoOne.append(divTwoOneOne)
+                divTwoOne.append(divTwoOneTwo)
                 divTwoTwo.append(divTwoOneOne)
                  
                 divTwo.append(divTwoOne)
