@@ -23,9 +23,23 @@ window.addEventListener('load', () => {
     });
     iconDelete.forEach(icon => {
         icon.addEventListener('click', (e) => {
-            console.log(icon.childNodes[1].nodeValue);
-            console.log(icon.childNodes[1]);
-            console.log("Clicked the deleting icon");
+            let container = icon.childNodes[1];
+            let word = JSON.stringify(container.innerText);
+            let id = eval(word);
+            // filtering the array
+            let array = load();
+            array.filter((todo => {
+                todo.id = id;
+            }));
+            let todelete = array[0];
+            console.log(array);
+            console.log(todelete);
+            console.log(id);
+            // array.splice(index , 1)
+            // localStorage.setItem('todos' , JSON.stringify(array))
+            // let newArray : (Todo)[] = load()
+            // render(newArray  , document.querySelector('ul')!)
+            // console.log("Clicked the deleting icon");
         });
     });
 });

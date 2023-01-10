@@ -27,10 +27,25 @@ window.addEventListener('load' , ()=>{
     
     iconDelete.forEach(icon => {
         icon.addEventListener('click' , (e : Event) => {
-            console.log(icon.childNodes[1].nodeValue);
-            console.log(icon.childNodes[1]);
+            let container : HTMLDivElement = icon.childNodes[1] as HTMLDivElement
+            let word : string = JSON.stringify(container.innerText)
+            let id : number = eval(word)
+            // filtering the array
+            let array : (Todo)[] = load()
+            array.filter((todo => {
+                todo.id = id
+            }))
+            let todelete = array[0]
+            console.log(array);
+            console.log(todelete);
+            console.log(id);
             
-            console.log("Clicked the deleting icon");
+            
+            // array.splice(index , 1)
+            // localStorage.setItem('todos' , JSON.stringify(array))
+            // let newArray : (Todo)[] = load()
+            // render(newArray  , document.querySelector('ul')!)
+            // console.log("Clicked the deleting icon");
             
         })
         
