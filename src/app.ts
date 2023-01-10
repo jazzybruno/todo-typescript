@@ -32,21 +32,13 @@ window.addEventListener('load' , ()=>{
             let id : number = eval(word)
             // filtering the array
             let array : (Todo)[] = load()
-            array.filter((todo => {
-                todo.id = id
+            let filtered : (Todo)[] =  array.filter((todo => {
+               return todo.id != id
             }))
-            let todelete = array[0]
-            console.log(array);
-            console.log(todelete);
-            console.log(id);
-            
-            
-            // array.splice(index , 1)
-            // localStorage.setItem('todos' , JSON.stringify(array))
-            // let newArray : (Todo)[] = load()
-            // render(newArray  , document.querySelector('ul')!)
-            // console.log("Clicked the deleting icon");
-            
+           //refreshing the list
+             let list : HTMLUListElement = document.querySelector('ul')!
+             localStorage.setItem('todos' , JSON.stringify(filtered))
+             window.location.reload()
         })
         
     })
@@ -83,6 +75,7 @@ form.addEventListener('submit', (e : Event) => {
     error.innerText = " "
     let list = new ListFormat(document.querySelector('ul')!)
     let length = load().length
+    console.log(length);
     let todo = new Todo(length + 1, input.value , false)
     let todoArray : (Todo)[] = []
 
@@ -98,7 +91,7 @@ form.addEventListener('submit', (e : Event) => {
         local.save()
     }
     
-    list.render(todoArray, 'start')
+    window.location.reload()
     input.value = ""
     }
 })
