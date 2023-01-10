@@ -76,7 +76,7 @@ form.addEventListener('submit', (e : Event) => {
     let list = new ListFormat(document.querySelector('ul')!)
     let length = load().length
     console.log(length);
-    let todo = new Todo(length + 1, input.value , false)
+    let todo = new Todo(length + 1, input.value , true)
     let todoArray : (Todo)[] = []
 
     if(list.load() == undefined || list.load() == null ){
