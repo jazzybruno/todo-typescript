@@ -40,6 +40,9 @@ window.addEventListener('load' , ()=>{
              
                 let newArray = [...noChecked , ...checked]
                 localStorage.setItem('todos' , JSON.stringify(newArray))
+                let list : HTMLUListElement = document.querySelector('ul')!
+                // list.innerHTML = ""
+                // load()
                 window.location.reload()
         })
     })
@@ -57,8 +60,8 @@ window.addEventListener('load' , ()=>{
            //refreshing the list
              let list : HTMLUListElement = document.querySelector('ul')!
              localStorage.setItem('todos' , JSON.stringify(filtered))
-                list.innerHTML = ""
-            //  window.location.reload()
+                // list.innerHTML = ""
+             window.location.reload()
         })
         
     })
